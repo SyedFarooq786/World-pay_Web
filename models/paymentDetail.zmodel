@@ -1,0 +1,15 @@
+
+ import "./payment.zmodel"  
+
+model PaymentDetail {
+
+    id        String    @id @default(uuid())  
+    upiId     String      
+    authCode  String      
+
+paymentId String      
+    payment   Payment?   @relation(fields: [paymentId], references: [id], name:"payment")  
+      dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}

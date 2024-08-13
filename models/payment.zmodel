@@ -1,0 +1,24 @@
+
+ import "./user.zmodel"  
+ import "./paymentDetail.zmodel"  
+ import "./paymentHistory.zmodel"  
+ import "./receipt.zmodel"  
+
+model Payment {
+
+    id        String    @id @default(uuid())  
+    amount    Float       
+    currency  String      
+    status    String      
+    initiatedAt String      
+    completedAt String?      
+
+userId    String      
+    user      User?      @relation(fields: [userId], references: [id], name:"user")  
+    paymentDetails PaymentDetail[] @relation("payment")  
+    paymentHistorys PaymentHistory[] @relation("payment")  
+    receipts  Receipt[] @relation("payment")  
+      dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}

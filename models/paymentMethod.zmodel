@@ -1,0 +1,16 @@
+
+ import "./user.zmodel"  
+
+model PaymentMethod {
+
+    id        String    @id @default(uuid())  
+    methodType String      
+    details   String      
+    defaultCurrency String      
+
+userId    String      
+    user      User?      @relation(fields: [userId], references: [id], name:"user")  
+      dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}

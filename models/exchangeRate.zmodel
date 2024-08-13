@@ -1,0 +1,13 @@
+
+
+model ExchangeRate {
+
+    id        String    @id @default(uuid())  
+    fromCurrency String      
+    toCurrency String      
+    rate      Float       
+
+dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}

@@ -1,0 +1,12 @@
+
+
+model Faq {
+
+    id        String    @id @default(uuid())  
+    question  String      
+    answer    String      
+
+dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}

@@ -1,0 +1,18 @@
+
+ import "./user.zmodel"  
+ import "./payment.zmodel"  
+
+model PaymentHistory {
+
+    id        String    @id @default(uuid())  
+    date      String      
+    currency  String      
+
+userId    String      
+    user      User?      @relation(fields: [userId], references: [id], name:"user")  
+    paymentId String      
+    payment   Payment?   @relation(fields: [paymentId], references: [id], name:"payment")  
+      dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}
